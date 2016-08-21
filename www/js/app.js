@@ -5,6 +5,23 @@
 // the 2nd parameter is an array of 'requires'
 angular.module('starter', ['ionic'])
 
+  .controller('BellaListController', function ($scope) {
+    $scope.bellaListItem = {
+      title: ''
+    };
+    $scope.bellaListItems = [];
+
+    $scope.addBellaListItem = function() {
+      $scope.bellaListItems.unshift($scope.bellaListItem);
+      $scope.bellaListItem = {
+        title: ''
+      };
+    };
+    $scope.deleteBellaListItem = function (index) {
+      $scope.bellaListItems.splice(index, 1);
+    };
+  })
+
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     if(window.cordova && window.cordova.plugins.Keyboard) {
